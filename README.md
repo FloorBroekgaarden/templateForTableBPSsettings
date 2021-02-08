@@ -5,4 +5,6 @@ The overleaf can be found here https://www.overleaf.com/7756463156hthtyzgzdkhn
 
 An image of an example of the table is shown below 
 
+![alt text](BPS_table_example.png?raw=true)
+
 
