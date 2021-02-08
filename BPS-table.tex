@@ -1,0 +1,275 @@
+% mnras_template.tex 
+%
+% LaTeX template for creating an MNRAS paper
+%
+% v3.0 released 14 May 2015
+% (version numbers match those of mnras.cls)
+%
+% Copyright (C) Royal Astronomical Society 2015
+% Authors:
+% Keith T. Smith (Royal Astronomical Society)
+
+% Change log
+%
+% v3.0 May 2015
+%    Renamed to match the new package name
+%    Version number matches mnras.cls
+%    A few minor tweaks to wording
+% v1.0 September 2013
+%    Beta testing only - never publicly released
+%    First version: a simple (ish) template for creating an MNRAS paper
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Basic setup. Most papers should leave these options alone.
+\documentclass[fleqn,usenatbib]{mnras}
+
+% MNRAS is set in Times font. If you don't have this installed (most LaTeX
+% installations will be fine) or prefer the old Computer Modern fonts, comment
+% out the following line
+\usepackage{newtxtext,newtxmath}
+% Depending on your LaTeX fonts installation, you might get better results with one of these:
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+
+% Use vector fonts, so it zooms properly in on-screen viewing software
+% Don't change these lines unless you know what you are doing
+\usepackage[T1]{fontenc}
+
+% Allow "Thomas van Noord" and "Simon de Laguarde" and alike to be sorted by "N" and "L" etc. in the bibliography.
+% Write the name in the bibliography as "\VAN{Noord}{Van}{van} Noord, Thomas"
+\DeclareRobustCommand{\VAN}[3]{#2}
+\let\VANthebibliography\thebibliography
+\def\thebibliography{\DeclareRobustCommand{\VAN}[3]{##3}\VANthebibliography}
+
+
+%%%%% AUTHORS - PLACE YOUR OWN PACKAGES HERE %%%%%
+
+% Only include extra packages if you really need them. Common packages are:
+\usepackage{graphicx}	% Including figure files
+\usepackage{amsmath}	% Advanced maths commands
+\usepackage{amssymb}	% Extra maths symbols
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
+
+% Please keep new commands to a minimum, and use \newcommand not \def to avoid
+% overwriting existing commands. Example:
+%\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
+\usepackage{xspace}
+\newcommand{\monei}{\ensuremath{m_{1,\rm{i}}}\xspace}
+\newcommand{\mtwoi}{\ensuremath{m_{2,\rm{i}}}\xspace}
+\newcommand{\monef}{\ensuremath{m_{1,\rm{f}}}\xspace}
+\newcommand{\mtwof}{\ensuremath{m_{2,\rm{f}}}\xspace}
+\newcommand{\ai}{\ensuremath{a_{\rm{i}}}\xspace}
+\newcommand{\qi}{\ensuremath{q_{\rm{i}}}\xspace}
+\newcommand{\Zi}{\ensuremath{Z_{\rm{i}}}\xspace}
+\newcommand{\vk}{\ensuremath{v_{\rm{k}}}\xspace}
+\newcommand{\thetak}{\ensuremath{{\theta}_{\rm{k}}}\xspace}
+\newcommand{\phik}{\ensuremath{{\phi}_{\rm{k}}}\xspace}
+\newcommand{\ei}{\ensuremath{{e}_{\rm{i}}}\xspace}
+
+\newcommand{\Msun}{\ensuremath{\,\rm{M}_{\odot}}\xspace}
+\newcommand{\Zsun}{\ensuremath{\,\rm{Z}_{\odot}}\xspace}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%% TITLE PAGE %%%%%%%%%%%%%%%%%%%
+
+% Title of the paper, and the short title which is used in the headers.
+% Keep the title short and informative.
+\title[BPS settings table template]{Template to create a Table showing your default settings for a (Binary) Population Synthesis simulation}
+
+% The list of authors, and the short list which is used in the headers.
+% If you need two or more lines of authors, add an extra line using \newauthor
+\author[]{Floor S. Broekgaarden,$^{1}$\thanks{E-mail: floor.broekgaarden@cfa.harvard.edu}
+\\
+% List of institutions
+$^{1}${Harvard-Smithsonian Center for Astrophysics,
+60 Garden St., Cambridge, MA 02138, USA}
+}
+
+% These dates will be filled out by the publisher
+\date{\today}
+
+% Enter the current year, for the copyright statements etc.
+\pubyear{2015}
+
+% Don't change these lines
+\begin{document}
+\label{firstpage}
+\pagerange{\pageref{firstpage}--\pageref{lastpage}}
+\maketitle
+
+% Abstract of the paper
+\begin{abstract}
+This document shares a template for describing your fiducial settings of your binary population synthesis model. Feel free to use / share! This table was inspired by \citep{2018MNRAS.481.1908K} and is currently based on the table as presented in Broekgaarden et al., (subm). Feel free to use it in any way you want and/or use an edited version for your own paper. I am merely sharing this in case it can help other (binary) population synthesis papers to provide a clear and easy summary of their model settings and assumptions. The main template uses the binary population synthesis code COMPAS. Please  feel free to add  templates for other codes, or e.g., add the table that you ended up using. You can add this as a new section and include a reference to the paper in which it has been used. 
+The code for this document is in overleaf \href{}{} and github  \href{}{}. 
+\end{abstract}
+
+% Select between one and six entries from the list of approved keywords.
+% Don't make up new ones.
+\begin{keywords}
+(transients:) black hole - neutron star mergers -- gravitational waves -- stars: evolution
+\end{keywords}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
+
+
+\section{Introduction}
+The table uses a couple of defined symbols and constants, such as for the solar mass. These can be found just before the title page. It currently makes use of the package `xspace'. 
+
+
+
+
+
+
+\section{COMPAS}
+Table~\ref{tab:COMPAS} shows an example of a table summarizing the binary population synthesis settings for a simulation using the code {\sc{COMPAS}}. This table is used in Broekgaarden et al., (subm.). You can easily remove the cyan stars in front of some of the rows. 
+
+\begin{table*}
+\caption{Initial values and default settings of the population synthesis  simulation with {\sc{COMPAS}} for our fiducial model. Cyan star symbols in front of a row indicate prescriptions and assumptions that we vary in this study.   }
+%
+\label{tab:COMPAS}
+\centering
+% ?\textwidth}{l @{\extracolsep{\fill}} 
+\resizebox{\textwidth}{!}{%
+% \begin{adjustbox}{max width=1\textwidth}
+% \centering
+\begin{tabular}{lll}
+\hline  \hline
+Description and name                                 														& Value/range                       & Note / setting   \\ \hline  \hline
+\multicolumn{3}{c}{Initial conditions}                                                                      \\ \hline
+Initial mass \monei                               															& $[5, 150]$\Msun    & \citet{2001MNRAS.322..231K} IMF  $\propto  {\monei}^{-\alpha}$  with $\alpha_{\rm{IMF}} = 2.3$ for stars above $5$\Msun	  \\
+%
+Initial mass ratio $\qi = \mtwoi / \monei $           												& $[0, 1]$                          &       We assume a flat mass ratio distribution  $p(\qi) \propto  1$ with \mtwoi $\geq 0.1\Msun$   \\
+%
+Initial semi-major axis \ai                                            											& $[0.01, 1000]$\AU & Distributed flat-in-log $p(\ai) \propto 1 / {\ai}$ \\ %We reject  binaries with \ai s.t. there is mass transfer at birth.            \\
+%
+%
+Initial metallicity \Zi                                           											& $[0.0001, 0.03]$                 & Distributed using a close to uniform grid in $\log_{10}(\Zi)$ with 53 metallicities        \\
+%
+Initial orbital eccentricity \ei                                 							 				& 0                                & All binaries are assumed to be circular at birth  \\
+%
+% initial rotation of stars                            															& 0                                 &                  \\  \hline
+\hline
+%initial mass function (IMF) slope 	$\alpha_{\rm{IMF}}$									&  $ 2.3$		& 	 for stars above $5$\Msun from \citet{2001MNRAS.322..231K} IMF\\  \hline
+\multicolumn{3}{c}{Fiducial parameter settings:}                                                            \\ \hline
+%
+Stellar winds  for hydrogen rich stars                                   																&      \citet{2010ApJ...714.1217B}    &   Based on {\citet{2000A&A...362..295V,2001A&A...369..574V}}, including  LBV wind mass loss with $f_{\rm{LBV}} = 1.5$.   \\
+%
+Stellar winds for hydrogen-poor helium stars &  \citet{2010ApJ...715L.138B} & Based on   {\citet{1998A&A...335.1003H}} and  {\citealt{2005A&A...442..587V}}.  \\
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% MASS TRANSFER THINGS %%%%%%%%%%%%%%%%%%%%%%%
+%
+Max transfer stability criteria & $\zeta$-prescription & Based on \citet[][]{2018MNRAS.481.4009V} and references therein     \\ 
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Mass transfer accretion rate & thermal timescale & Limited by thermal timescale for stars  \citet[][]{2018MNRAS.481.4009V,2020MNRAS.498.4705V} \\ 
+ & Eddington-limited  & Accretion rate is Eddington-limit for compact objects  \\
+%
+Non-conservative mass loss & isotropic re-emission &  {\citet[][]{1975MmSAI..46..217M,1991PhR...203....1B,1997A&A...327..620S}} \\ 
+& &  {\citet{2006csxs.book..623T}} \\
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Case BB mass transfer stability                                														& always stable         &       Based on  \citet{2015MNRAS.451.2123T,2017ApJ...846..170T,2018MNRAS.481.4009V}         \\ 
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%% CE THINGS %%%%%%%%%%%%%%%%%%%%%%%
+%
+CE prescription & $\alpha-\lambda$ & based on  \citet{1984ApJ...277..355W,1990ApJ...358..189D}  \\
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} CE efficiency $\alpha$-parameter                     												& 1.0                               &              \\
+%
+CE $\lambda$-parameter                               													& $\lambda_{\rm{Nanjing}}$                             &        Based on \citet{2010ApJ...716..114X,2010ApJ...722.1985X} and  \citet{2012ApJ...759...52D}       \\
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Hertzsprung gap (HG) donor in {CE}                       														& pessimistic                       &  Defined in \citet{2012ApJ...759...52D}:  HG donors don't survive a {CE}  phase        \\
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%.    SN THINGS   %%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+{SN} natal kick magnitude \vk                          									& $[0, \infty)$\kms & Drawn from Maxwellian distribution    with standard deviation $\sigma_{\rm{rms}}^{\rm{1D}}$          \\
+%
+ {SN} natal kick polar angle $\thetak$          											& $[0, \pi]$                        & $p(\thetak) = \sin(\thetak)/2$ \\
+%
+ {SN} natal kick azimuthal angle $\phi_k$                           					  	& $[0, 2\pi]$                        & Uniform $p(\phi) = 1/ (2 \pi)$   \\
+%
+ {SN} mean anomaly of the orbit                    											&     $[0, 2\pi]$                             & Uniformly distributed  \\
+ %
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Core-collapse  {SN} remnant mass prescription          									     &  delayed                     &  From \citep{2012ApJ...749...91F}, which  has no lower {BH} mass gap  \\%
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} USSN  remnant mass prescription          									     &  delayed                     &  From \citep{2012ApJ...749...91F}   \\%
+%
+ECSN  remnant mass presciption                        												&                                 $m_{\rm{f}} = 1.26\Msun$ &      Based on Equation~8 in \citet{1996ApJ...457..834T}          \\
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Core-collapse  {SN}  velocity dispersion $\sigma_{\rm{rms}}^{\rm{1D}}$ 			& 265\kms           & 1D rms value based on              \citet{2005MNRAS.360..974H}                          \\
+%
+ USSN  and ECSN  velocity dispersion $\sigma_{\rm{rms}}^{\rm{1D}}$ 							 	& 30\kms             &            1D rms value based on e.g.,    \citet{2002ApJ...571L..37P,2004ApJ...612.1044P}    \\
+%
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} PISN / PPISN remnant mass prescription               											& \citet{2019ApJ...882...36M}                    &       As implemented in \citet{2019ApJ...882..121S}      \\
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Maximum NS mass                                      & $\rn{max}_{\rm{NS}} = 2.5$\Msun &             \\
+Tides and rotation & & We do not include prescriptions for tides and/or rotation\\
+%
+%
+\hline
+\multicolumn{3}{c}{Simulation settings}                                                                     \\ \hline
+Total number of binaries sampled per metallicity  & $\approx 10^6$                    &      We simulate about a million binaries per \Zi grid point            \\
+Sampling method                                      & \sc{STROOPWAFEL} &                Adaptive importance sampling from  \citet{2019MNRAS.490.5228B}.  \\
+%
+Binary fraction                                      & $f_{\rm{bin}} = 1$ &       Corrected factor to be consistent with e.g., {\citet[][]{2017IAUS..329..110S}}        \\
+Solar metallicity \Zsun                             & \Zsun = 0.0142 & based on {\citet{2009ARA&A..47..481A}} \\
+Binary population synthesis code                                      & COMPAS &       \citet{stevenson2017formation, 2018MNRAS.477.4685B, 2018MNRAS.481.4009V, 2019MNRAS.490.3740N} \\
+& & \citep{2019MNRAS.490.5228B}.        \\
+%2011IAUS..272..474S, 2015A&A...580A..93D, 2017A&A...598A..84A,
+\hline \hline
+\end{tabular}%
+% \end{adjustbox}
+}
+\end{table*}
+
+
+\section*{Acknowledgements}
+This research has made use of NASA’s Astrophysics Data System Bibliographic Services.
+
+
+
+%%%%%%%%%%%%%%%%%%%% REFERENCES %%%%%%%%%%%%%%%%%%
+
+% The best way to enter references is to use BibTeX:
+
+\bibliographystyle{mnras}
+\bibliography{BPS-table} % if your bibtex file is called example.bib
+
+
+% Alternatively you could enter them by hand, like this:
+% This method is tedious and prone to error if you have lots of references
+%\begin{thebibliography}{99}
+%\bibitem[\protect\citeauthoryear{Author}{2012}]{Author2012}
+%Author A.~N., 2013, Journal of Improbable Astronomy, 1, 1
+%\bibitem[\protect\citeauthoryear{Others}{2013}]{Others2013}
+%Others S., 2012, Journal of Interesting Stuff, 17, 198
+%\end{thebibliography}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%% APPENDICES %%%%%%%%%%%%%%%%%%%%%
+
+% \appendix
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Don't change these lines
+\bsp	% typesetting comment
+\label{lastpage}
+\end{document}
+
+% End of mnras_template.tex
