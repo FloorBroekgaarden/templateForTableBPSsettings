@@ -21,7 +21,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Basic setup. Most papers should leave these options alone.
-\documentclass[fleqn,usenatbib]{mnras}
+\documentclass[fleqn,usenatbib, onecolumn]{mnras}
 
 % MNRAS is set in Times font. If you don't have this installed (most LaTeX
 % installations will be fine) or prefer the old Computer Modern fonts, comment
@@ -71,8 +71,8 @@
 
 \newcommand{\Msun}{\ensuremath{\,\rm{M}_{\odot}}\xspace}
 \newcommand{\Zsun}{\ensuremath{\,\rm{Z}_{\odot}}\xspace}
-
-
+\newcommand{\kms}{\ensuremath{\,\rm{km}\,\rm{s}^{-1}}\xspace}
+\newcommand{\AU}{\ensuremath{\,\mathrm{AU}}\xspace}
 
 
 
@@ -97,7 +97,7 @@ $^{1}${Harvard-Smithsonian Center for Astrophysics,
 \date{\today}
 
 % Enter the current year, for the copyright statements etc.
-\pubyear{2015}
+\pubyear{2021}
 
 % Don't change these lines
 \begin{document}
@@ -107,8 +107,8 @@ $^{1}${Harvard-Smithsonian Center for Astrophysics,
 
 % Abstract of the paper
 \begin{abstract}
-This document shares a template for describing your fiducial settings of your binary population synthesis model. Feel free to use / share! This table was inspired by \citep{2018MNRAS.481.1908K} and is currently based on the table as presented in Broekgaarden et al., (subm). Feel free to use it in any way you want and/or use an edited version for your own paper. I am merely sharing this in case it can help other (binary) population synthesis papers to provide a clear and easy summary of their model settings and assumptions. The main template uses the binary population synthesis code COMPAS. Please  feel free to add  templates for other codes, or e.g., add the table that you ended up using. You can add this as a new section and include a reference to the paper in which it has been used. 
-The code for this document is in overleaf \href{}{} and github  \href{}{}. 
+This document shares a template for describing your fiducial settings of your binary population synthesis model. Feel free to use / share! This table was inspired by \citep{2018MNRAS.481.1908K} and is currently based on the table as presented in Broekgaarden et al., (subm). Feel free to use it in any way you want and/or use an edited version for your own paper. No credits needed; I am merely sharing this in case it can help other (binary) population synthesis papers to provide a clear and easy summary of their model settings and assumptions. The main template uses the binary population synthesis code COMPAS. Please  feel free to add  templates for other codes, or e.g., add the table that you ended up using. You can add this as a new section and include a reference to the paper in which it has been used. 
+The code for this document is in overleaf \href{https://www.overleaf.com/7756463156hthtyzgzdkhn}{https://www.overleaf.com/7756463156hthtyzgzdkhn} and github  \href{https://github.com/FloorBroekgaarden/templateForTableBPSsettings}{https://github.com/FloorBroekgaarden/templateForTableBPSsettings}. 
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
@@ -122,6 +122,7 @@ The code for this document is in overleaf \href{}{} and github  \href{}{}.
 %%%%%%%%%%%%%%%%% BODY OF PAPER %%%%%%%%%%%%%%%%%%
 
 
+
 \section{Introduction}
 The table uses a couple of defined symbols and constants, such as for the solar mass. These can be found just before the title page. It currently makes use of the package `xspace'. 
 
@@ -132,6 +133,14 @@ The table uses a couple of defined symbols and constants, such as for the solar 
 
 \section{COMPAS}
 Table~\ref{tab:COMPAS} shows an example of a table summarizing the binary population synthesis settings for a simulation using the code {\sc{COMPAS}}. This table is used in Broekgaarden et al., (subm.). You can easily remove the cyan stars in front of some of the rows. 
+
+
+
+\section*{Acknowledgements}
+This research has made use of NASA’s Astrophysics Data System Bibliographic Services.
+
+
+\vspace{10cm}
 
 \begin{table*}
 \caption{Initial values and default settings of the population synthesis  simulation with {\sc{COMPAS}} for our fiducial model. Cyan star symbols in front of a row indicate prescriptions and assumptions that we vary in this study.   }
@@ -150,8 +159,7 @@ Initial mass \monei                               															& $[5, 150]$\Ms
 %
 Initial mass ratio $\qi = \mtwoi / \monei $           												& $[0, 1]$                          &       We assume a flat mass ratio distribution  $p(\qi) \propto  1$ with \mtwoi $\geq 0.1\Msun$   \\
 %
-Initial semi-major axis \ai                                            											& $[0.01, 1000]$\AU & Distributed flat-in-log $p(\ai) \propto 1 / {\ai}$ \\ %We reject  binaries with \ai s.t. there is mass transfer at birth.            \\
-%
+Initial semi-major axis \ai                                            											& $[0.01, 1000]$\AU & Distributed flat-in-log $p(\ai) \propto 1 / {\ai}$ \\   
 %
 Initial metallicity \Zi                                           											& $[0.0001, 0.03]$                 & Distributed using a close to uniform grid in $\log_{10}(\Zi)$ with 53 metallicities        \\
 %
@@ -213,7 +221,7 @@ ECSN  remnant mass presciption                        												&             
  USSN  and ECSN  velocity dispersion $\sigma_{\rm{rms}}^{\rm{1D}}$ 							 	& 30\kms             &            1D rms value based on e.g.,    \citet{2002ApJ...571L..37P,2004ApJ...612.1044P}    \\
 %
 {\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} PISN / PPISN remnant mass prescription               											& \citet{2019ApJ...882...36M}                    &       As implemented in \citet{2019ApJ...882..121S}      \\
-{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Maximum NS mass                                      & $\rn{max}_{\rm{NS}} = 2.5$\Msun &             \\
+{\hspace{-.35cm}\Large{\textcolor{cyan}{$\star$}}}{\hspace{+.02cm}} Maximum NS mass                                      & $\rm{max}_{\rm{NS}} = 2.5$\Msun &             \\
 Tides and rotation & & We do not include prescriptions for tides and/or rotation\\
 %
 %
@@ -225,8 +233,7 @@ Sampling method                                      & \sc{STROOPWAFEL} &       
 Binary fraction                                      & $f_{\rm{bin}} = 1$ &       Corrected factor to be consistent with e.g., {\citet[][]{2017IAUS..329..110S}}        \\
 Solar metallicity \Zsun                             & \Zsun = 0.0142 & based on {\citet{2009ARA&A..47..481A}} \\
 Binary population synthesis code                                      & COMPAS &       \citet{stevenson2017formation, 2018MNRAS.477.4685B, 2018MNRAS.481.4009V, 2019MNRAS.490.3740N} \\
-& & \citep{2019MNRAS.490.5228B}.        \\
-%2011IAUS..272..474S, 2015A&A...580A..93D, 2017A&A...598A..84A,
+& & \citet{2019MNRAS.490.5228B}.        \\
 \hline \hline
 \end{tabular}%
 % \end{adjustbox}
@@ -234,8 +241,13 @@ Binary population synthesis code                                      & COMPAS &
 \end{table*}
 
 
-\section*{Acknowledgements}
-This research has made use of NASA’s Astrophysics Data System Bibliographic Services.
+
+\newpage
+
+\vspace{30cm}
+
+
+
 
 
 
